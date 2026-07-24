@@ -1,0 +1,204 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { GithubIcon } from "./icons";
+import ScrollReveal from "./ScrollReveal";
+
+import { Project } from "@prisma/client";
+
+const DEFAULT_PROJECTS: any[] = [
+  {
+    title: "FastStore API",
+    subtitle: "High-Performance E-Commerce Backend",
+    description:
+      "A comprehensive e-commerce API built with FastAPI and PostgreSQL. Features include JWT authentication, role-based access control, product inventory management, and automated OpenAPI documentation via Swagger UI.",
+    tags: JSON.stringify([
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "Swagger",
+      "REST",
+    ]),
+    gradient: "from-coral/20 via-purple/10 to-violet/20",
+    githubUrl: "#",
+    liveUrl: "#",
+  },
+  {
+    title: "DashUI Framework",
+    subtitle: "Responsive Admin Dashboard",
+    description:
+      "A fully responsive admin dashboard interface built entirely with HTML, CSS, and Bootstrap. Includes custom charting components, data tables, and a mobile-first sidebar navigation system.",
+    tags: JSON.stringify([
+      "HTML",
+      "CSS",
+      "Bootstrap",
+      "Responsive",
+      "UI/UX",
+    ]),
+    gradient: "from-purple/20 via-violet/10 to-coral/20",
+    githubUrl: "#",
+    liveUrl: "#",
+  },
+  {
+    title: "NextFolio",
+    subtitle: "Modern Developer Portfolio",
+    description:
+      "A blazing fast, SEO-optimized portfolio website built with Next.js and Tailwind CSS. Features dynamic content rendering, framer-motion animations, and a PostgreSQL database powered by Prisma.",
+    tags: JSON.stringify(["Next.js", "Tailwind CSS", "TypeScript", "Prisma"]),
+    gradient: "from-violet/20 via-coral/10 to-purple/20",
+    githubUrl: "#",
+    liveUrl: "#",
+  },
+];
+
+export default function Projects({ projects }: { projects?: Project[] }) {
+  const displayProjects = projects?.length ? projects : DEFAULT_PROJECTS;
+  
+  return (
+    <section id="projects" className="relative py-[80px] lg:py-[100px] bg-surface/50">
+      {/* Background accent */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-subtle" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-subtle" />
+
+      <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
+        {/* Section Header */}
+        <ScrollReveal>
+          <div className="flex items-center gap-4 mb-16">
+            <span className="text-sm font-mono text-violet font-medium">
+              02
+            </span>
+            <h2
+              className="font-heading font-bold text-content"
+              style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)" }}
+            >
+              Featured Projects
+            </h2>
+            <span className="flex-1 h-[1px] bg-subtle" />
+          </div>
+        </ScrollReveal>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayProjects.map((project, i) => (
+            <motion.div
+              key={project.title}
+              initial={{ y: 40, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{
+                duration: 0.6,
+                delay: i * 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="group relative"
+            >
+              <div className="relative h-full rounded-3xl border border-subtle overflow-hidden bg-surface hover:border-violet/20 transition-all duration-500">
+                  {/* Image area / gradient placeholder */}
+                  {project.imageUrl ? (
+                    <a 
+                      href={project.liveUrl || project.githubUrl || "#"}
+                      target={project.liveUrl || project.githubUrl ? "_blank" : undefined}
+                      rel={project.liveUrl || project.githubUrl ? "noopener noreferrer" : undefined}
+                      onClick={(e) => { if (!project.liveUrl && !project.githubUrl) e.preventDefault(); }}
+                      className="block relative h-48 overflow-hidden"
+                    >
+                      <img src={project.imageUrl} alt={project.title} className="absolute inset-0 w-full h-full object-cover" />
+                      <div className="absolute inset-0 bg-[var(--overlay-bg)]" />
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      {/* View project label */}
+                      <motion.div className="absolute bottom-4 left-4 flex items-center gap-1.5 text-sm font-medium text-white drop-shadow-md opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
+                        View Project
+                        <ArrowUpRight size={14} />
+                      </motion.div>
+                    </a>
+                  ) : (
+                    <a
+                      href={project.liveUrl || project.githubUrl || "#"}
+                      target={project.liveUrl || project.githubUrl ? "_blank" : undefined}
+                      rel={project.liveUrl || project.githubUrl ? "noopener noreferrer" : undefined}
+                      onClick={(e) => { if (!project.liveUrl && !project.githubUrl) e.preventDefault(); }}
+                      className={`block relative h-48 bg-gradient-to-br ${project.gradient} overflow-hidden`}
+                    >
+                      <div className="absolute inset-0 bg-[var(--overlay-bg)]" />
+
+                      {/* Project title overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="text-5xl font-heading font-bold text-content/10 group-hover:text-content/20 transition-all duration-500 group-hover:scale-110">
+                          {project.title[0]}
+                        </span>
+                      </div>
+
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                      {/* View project label */}
+                      <motion.div className="absolute bottom-4 left-4 flex items-center gap-1.5 text-sm font-medium text-content opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-400">
+                        View Project
+                        <ArrowUpRight size={14} />
+                      </motion.div>
+                    </a>
+                  )}
+
+                {/* Content */}
+                <div className="p-6 space-y-4">
+                  <div>
+                    <h3 className="text-xl font-heading font-bold text-content mb-1">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-violet font-medium">
+                      {project.subtitle}
+                    </p>
+                  </div>
+
+                  <p className="text-sm text-content-dim leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2">
+                    {(project.tags ? JSON.parse(project.tags) : []).map((tag: string) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-1 text-[11px] font-medium text-content-dim/80 bg-[var(--tag-bg)] rounded-md border border-subtle"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex items-center gap-3 pt-2">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${project.title} GitHub repository`}
+                        className="p-2.5 rounded-xl text-content-dim hover:text-content hover:bg-[var(--subtle-hover-strong)] transition-all duration-300"
+                      >
+                        <GithubIcon width={18} height={18} />
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${project.title} live demo`}
+                        className="p-2.5 rounded-xl text-content-dim hover:text-content hover:bg-[var(--subtle-hover-strong)] transition-all duration-300"
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
