@@ -65,7 +65,7 @@ export default function Footer({ settings }: { settings?: SiteSettings | null })
                 <span className="gradient-text">Ali Haider</span>
               </a>
               <p className="text-sm text-content-dim mt-2 max-w-xs">
-                {settings?.heroSubtext || "AI/ML Engineer building intelligent systems that solve real-world problems."}
+                {settings?.heroSubtext || "Full-Stack Developer building robust web applications that solve real-world problems."}
               </p>
             </div>
 

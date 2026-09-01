@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌟 AI/ML & Developer Portfolio Project
 
-## Getting Started
+A high-performance, modern full-stack developer portfolio web application with a dynamic admin management system. Built with Next.js 16 (App Router), React 19, Tailwind CSS v4, Prisma ORM, and PostgreSQL.
 
-First, run the development server:
+---
+
+## ⚡ Quick Start
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Configure Environment Variables
+cp .env.example .env   # (or set up .env with your PostgreSQL database URL)
+
+# 3. Setup & Seed Database
+npx prisma db push
+npx prisma db seed
+
+# 4. Start local development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the website.
+Access the admin portal at [http://localhost:3000/admin](http://localhost:3000/admin).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📖 Complete Documentation & Handover Package
 
-## Learn More
+This project includes complete documentation for buyers, developers, and hosting deployment:
 
-To learn more about Next.js, take a look at the following resources:
+- 📄 **[Full Setup & Deployment Guide](PROJECT_DOCUMENTATION.md)** — Detailed step-by-step setup, env configuration, admin user login, Vercel & Netlify free hosting guide.
+- 🗄️ **[Database Schema & SQL Seed](schema.sql)** — Raw SQL schema DDL and initial dataset script for Neon, Supabase, or local PostgreSQL.
+- ⚙️ **Prisma Schema**: `prisma/schema.prisma`
+- 🌱 **Seed Script**: `prisma/seed.ts`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 💼 Included Deliverables for Sale Handover
+- ✅ Complete Next.js 16 + React 19 + TypeScript Source Code
+- ✅ Dynamic `/admin` Panel (Manage Projects, Work Experience, Skills, Stats, Site Settings)
+- ✅ Cloudinary Image Upload Support & Resend Contact Form Integration
+- ✅ Database Schema (Prisma & Raw PostgreSQL `schema.sql`)
+- ✅ Automated Seed Data Script (`npx prisma db seed`)
+- ✅ Free Vercel & Netlify Deployment Documentation
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*For setup questions or customization, refer to [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md).*

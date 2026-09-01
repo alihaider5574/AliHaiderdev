@@ -4,24 +4,20 @@ import ThemeProvider from "@/components/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ali Haider — AI/ML Engineer",
+  title: "Ali Haider — MERN Stack Developer",
   description:
-    "I build machine learning systems that see, predict, and ship. Portfolio of Ali Haider — AI/ML Engineer specializing in computer vision, predictive modeling, and full-stack deployment.",
-  keywords: [
-    "AI Engineer",
-    "ML Engineer",
-    "Machine Learning",
-    "Computer Vision",
-    "TensorFlow",
-    "Python",
-    "Portfolio",
-    "Ali Haider",
-  ],
+    "I build full-stack web applications that scale, perform, and ship. Portfolio of Ali Haider — MERN Stack Developer specializing in responsive design and robust APIs.",
+  icons: {
+    icon: "/ali.jpg",
+  },
   openGraph: {
-    title: "Ali Haider — AI/ML Engineer",
-    description:
-      "I build machine learning systems that see, predict, and ship.",
     type: "website",
+    locale: "en_US",
+    url: "https://alihaider.dev",
+    siteName: "Ali Haider Portfolio",
+    title: "Ali Haider — MERN Stack Developer",
+    description:
+      "I build full-stack web applications that scale, perform, and ship.",
   },
 };
 
