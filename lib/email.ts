@@ -1,7 +1,5 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 interface ContactEmailData {
   name: string;
   email: string;
@@ -10,10 +8,20 @@ interface ContactEmailData {
 
 export async function sendContactNotification(data: ContactEmailData) {
   const receiveEmail = process.env.CONTACT_RECEIVE_EMAIL;
+  const apiKey = process.env.RESEND_API_KEY;
+
   if (!receiveEmail) {
     console.error("CONTACT_RECEIVE_EMAIL is not set");
     return;
   }
+
+  if (!apiKey) {
+    console.warn("RESEND_API_KEY is not set — skipping email notification");
+    return;
+  }
+
+  // Lazy initialization — only create Resend client when actually needed
+  const resend = new Resend(apiKey);
 
   try {
     await resend.emails.send({
